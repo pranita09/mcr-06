@@ -2,7 +2,8 @@ import { useNavigate, useParams } from "react-router-dom";
 import { useCuisine } from "../contexts/cuisineContext";
 import { ReviewCard } from "../components/ReviewCard";
 import { BsArrowLeft } from "react-icons/bs";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { ReviewModal } from "../components/ReviewModal";
 
 export const SingleRestaurent = () => {
   const navigate = useNavigate();
@@ -19,11 +20,16 @@ export const SingleRestaurent = () => {
 
   const allMenus = restaurent?.menu?.map((item) => item?.name);
 
+  useEffect(() => {}, [restaurentList]);
+
   return (
     <div className="p-4">
       <div className="mt-6 ml-6">
         <span className="rounded" onClick={() => navigate(-1)}>
-          <BsArrowLeft className="hover: cursor-pointer hover:scale-125 text-xl" />
+          <BsArrowLeft
+            className="hover: cursor-pointer hover:scale-125 text-xl"
+            title="Go back"
+          />
         </span>
       </div>
       <div className="mx-8 py-4 px-[6rem]">
@@ -37,7 +43,10 @@ export const SingleRestaurent = () => {
             </span>
           </div>
           <div>
-            <button className="border py-2 px-4 rounded bg-[#f87171] text-[white] hover:scale-105">
+            <button
+              className="border py-2 px-4 rounded bg-[#f87171] text-[white] hover:scale-105"
+              onClick={() => setShowReviewForm(true)}
+            >
               Add Review
             </button>
           </div>
@@ -50,6 +59,14 @@ export const SingleRestaurent = () => {
           ))}
         </div>
       </div>
+      {showReviewForm && (
+        <div className="flex justify-center items-center fixed z-[99] inset-0 bg-[#00000060]">
+          <ReviewModal
+            setShowReviewForm={setShowReviewForm}
+            restaurentId={restaurentId}
+          />
+        </div>
+      )}
     </div>
   );
 };
