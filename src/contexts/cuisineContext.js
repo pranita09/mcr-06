@@ -15,13 +15,11 @@ const cuisineReducer = (state, { type, payload }) => {
     case "SELECT_CUISINE":
       return { ...state, selectedCuisine: payload };
     case "ADD_REVIEW":
-      console.log(payload);
-      const updatedRestaurants = state.restaurentList.map((item) =>
-        item?.id === payload?.restaurentId
+      const updatedRestaurants = state.restaurentList.map((item) => {
+        return item?.id === parseInt(payload?.restaurentId)
           ? { ...item, ratings: [...item.ratings, payload.ratingData] }
-          : item
-      );
-      console.log(updatedRestaurants);
+          : item;
+      });
       return { ...state, restaurentList: updatedRestaurants };
     default:
       return state;

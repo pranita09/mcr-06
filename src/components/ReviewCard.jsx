@@ -7,7 +7,7 @@ export const ReviewCard = ({ rating }) => {
       <div>
         <div className="flex gap-4 items-center">
           <UserAvatar profileImage={rating?.pp} className="h-12 w-12" />
-          <span>{rating?.revName}</span>
+          <span>{rating?.revName ? rating?.revName : "Pranita"}</span>
         </div>
         <p className="py-2">{rating?.comment}</p>
       </div>

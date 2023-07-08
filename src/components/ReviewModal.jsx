@@ -16,7 +16,7 @@ export const ReviewModal = ({ setShowReviewForm, restaurentId }) => {
       type: "ADD_REVIEW",
       payload: {
         restaurentId: restaurentId,
-        ratingData: { ...reviewDetails, rvName: "Pranita" },
+        ratingData: reviewDetails,
       },
     });
     setReviewDetails({
