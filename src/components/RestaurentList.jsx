@@ -3,8 +3,7 @@ import { MenuCard } from "./MenuCard";
 
 export const RestaurentList = () => {
   const {
-    state: { cuisinesList, selectedCuisine, restaurentList },
-    dispatch,
+    state: { selectedCuisine, restaurentList },
   } = useCuisine();
 
   if (selectedCuisine === false) {
@@ -20,9 +19,14 @@ export const RestaurentList = () => {
       {restaurents?.map((restaurent) => (
         <div key={restaurent?.id}>
           <h1 className="text-2xl py-4">Dishes By {restaurent?.name}</h1>
-          <div className="flex justify-center items-center gap-6">
+          <div className="flex justify-center items-center gap-8 flex-wrap">
             {restaurent?.menu?.map((menu, index) => (
-              <MenuCard key={index} menu={menu} restaurent={restaurent?.name} />
+              <MenuCard
+                key={index}
+                menu={menu}
+                restaurent={restaurent?.name}
+                restaurentId={restaurent?.id}
+              />
             ))}
           </div>
         </div>

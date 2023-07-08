@@ -15,7 +15,7 @@ export const Home = () => {
         {cuisinesList?.map((cuisine) => (
           <li key={cuisine?.id}>
             <button
-              className="border py-2 px-4 rounded bg-[#f87171] text-[white] hover:scale-110"
+              className="border py-2 px-4 rounded bg-[#f87171] text-[white] hover:scale-105"
               onClick={() =>
                 dispatch({ type: "SELECT_CUISINE", payload: cuisine?.id })
               }

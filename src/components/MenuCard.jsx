@@ -1,6 +1,9 @@
-export const MenuCard = ({ menu, restaurent }) => {
+import { useNavigate } from "react-router-dom";
+
+export const MenuCard = ({ menu, restaurent, restaurentId }) => {
+    const navigate = useNavigate()
   return (
-    <div className="flex flex-col rounded-md w-[12rem] h-[19.5rem] shadow-lg hover:cursor-pointer">
+    <div className="flex flex-col rounded-md w-[12rem] h-[19.5rem] shadow-lg hover:cursor-pointer hover:scale-105" onClick={()=> navigate(`/restaurent/${restaurentId}`)} >
       <div className="w-[100%] h-[65%]">
         <img
           src={menu?.imgSrc}
