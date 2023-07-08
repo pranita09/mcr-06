@@ -16,9 +16,19 @@ const cuisineReducer = (state, { type, payload }) => {
       return { ...state, selectedCuisine: payload };
     case "ADD_REVIEW":
       const updatedRestaurants = state.restaurentList.map((item) => {
-        return item?.id === parseInt(payload?.restaurentId)
-          ? { ...item, ratings: [...item.ratings, payload.ratingData] }
-          : item;
+        if (item?.id === parseInt(payload?.restaurentId)) {
+          const newRatings = [payload?.ratingData, ...item.ratings];
+          const newAverageRating =
+            (item.averageRating * item.ratings.length +
+              payload?.ratingData.rating) /
+            (item.ratings.length + 1);
+          return {
+            ...item,
+            ratings: newRatings,
+            averageRating: newAverageRating.toFixed(1),
+          };
+        }
+        return item;
       });
       return { ...state, restaurentList: updatedRestaurants };
     default:

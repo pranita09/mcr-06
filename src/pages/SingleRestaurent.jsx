@@ -32,7 +32,7 @@ export const SingleRestaurent = () => {
           />
         </span>
       </div>
-      <div className="mx-8 py-4 px-[6rem]">
+      <div className="mx-8 py-4 px-[9rem]">
         <h1 className="text-[2.5rem] py-2">{restaurent?.name}</h1>
         <div className="flex justify-between">
           <div className="flex flex-col gap-0.5">
